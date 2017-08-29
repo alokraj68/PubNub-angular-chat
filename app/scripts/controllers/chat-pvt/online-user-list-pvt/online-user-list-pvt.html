@@ -1,0 +1,9 @@
+<div class="online-user-list users-list" ng-repeat="user in users track by user.uuid">
+        <div class="chat-user" ng-click="openChat(user.uuid);">
+            <span class="pull-right label label-success">Online</span>
+            <user-avatar uuid="{{user.uuid}}"></user-avatar>
+            <div class="chat-user-name">
+                <a href="#">{{user.uuid}}</a>
+            </div>
+        </div>
+    </div>

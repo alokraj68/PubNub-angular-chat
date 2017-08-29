@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="hpanel ">
+            <div class="panel-heading hbuilt">
+                Private Chat room
+            </div>
+            <div class="panel-body no-padding">
+                    <!-- <div class="input-group message-form">
+                            <form ng-submit="signUp()">
+                              <i class="prefix mdi-communication-chat"></i>
+                              <input ng-model="userName" class="form-control" type="text" placeholder="Type your name here...">
+                             <span class="input-group-btn">
+                                                      <button class="btn btn-success" type="submit" ng-click="signUp()">
+                                                          Login</button>
+                                                  </span> </form>
+                          
+                          </div> -->
+                          <input ng-model="toUser" class="form-control" type="text">
+                <div class="row">
+                        
+                    <div class="col-md-9 ">
+                        
+                            <message-list-pvt></message-list-pvt>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="chat-users">
+                                <online-user-list-pvt></online-user-list-pvt>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="panel-footer">
+                <message-form-pvt></message-form-pvt>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

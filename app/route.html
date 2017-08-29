@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <input type="text" id="userName">
+    <button onclick="login();">login..</button>
+
+    <script>
+        // Check browser support
+        function login() {
+            var username = document.getElementById('userName').value;
+            console.log(username);
+            if (typeof (Storage) !== "undefined") {
+                // Store
+                localStorage.setItem("username", username);
+                window.location = "http://localhost:9000/#/app_views/private_chat_view";
+                // Retrieve
+                
+            } else {
+                console.log( "Sorry, your browser does not support Web Storage...");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

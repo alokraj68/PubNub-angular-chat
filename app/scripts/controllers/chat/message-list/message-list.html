@@ -1,0 +1,5 @@
+<div class="chat-discussion message-list collection"> 
+  <div class="chat-message left message-item collection-item" ng-repeat="message in messages track by message.uuid">
+    <message-item id="{{message.uuid}}" content="{{message.content}}" sender-uuid="{{message.sender_uuid}}" date="{{message.date}}"></message-item>
+  </div>
+</div>
