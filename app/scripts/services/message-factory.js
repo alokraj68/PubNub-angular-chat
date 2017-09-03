@@ -1,12 +1,23 @@
 angular.module('homer')
-  .factory('MessageService', ['$rootScope', '$q', 'Pubnub', 'currentUser',
-    function MessageServiceFactory($rootScope, $q, Pubnub, currentUser) {
+  .factory('MessageService', ['$rootScope', '$q', 'Pubnub', 'PubnubService',
+    function MessageServiceFactory($rootScope, $q, Pubnub, PubnubService) {
 
       // Aliasing this by self so we can access to this trough self in the inner functions
       var self = this;
       this.messages = []
+
+      if (typeof (Storage) !== "undefined") {
+        // Store
+        var currentUser = localStorage.getItem("username");
+       
+        // Retrieve
+
+    } else {
+        console.log("Sorry, your browser does not support Web Storage...");
+    }
+
       this.channel = 'messages-channel6';
-console.log("public channel is subscribed : "+this.channel);
+      console.log("public channel is subscribed : "+this.channel);
       // We keep track of the timetoken of the first message of the array
       // so it will be easier to fetch the previous messages later
       this.firstMessageTimeToken = null;
@@ -21,7 +32,7 @@ console.log("public channel is subscribed : "+this.channel);
       };
 
       var init = function () {
-
+        PubnubService.pubnubInit();
         Pubnub.subscribe({
           channel: self.channel,
           disconnect: whenDisconnected,

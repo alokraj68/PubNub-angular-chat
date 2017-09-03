@@ -1,11 +1,22 @@
 angular.module('homer')
-  .factory('MessageServicePvt', ['$rootScope', '$q', 'Pubnub', 'currentUser',
-    function MessageServiceFactoryPvt($rootScope, $q, Pubnub, currentUser) {
+  .factory('MessageServicePvt', ['$rootScope', '$q', 'Pubnub','PubnubService',
+    function MessageServiceFactoryPvt($rootScope, $q, Pubnub,PubnubService) {
 
       // Aliasing this by self so we can access to this trough self in the inner functions
       var self = this;
       this.messages = []
-       this.channel = currentUser + 'incoming';
+
+      if (typeof (Storage) !== "undefined") {
+        // Store
+        var currentUser = localStorage.getItem("username");
+       
+        // Retrieve
+
+    } else {
+        console.log("Sorry, your browser does not support Web Storage...");
+    }
+
+       this.channel =currentUser  + 'incoming';
       // this.channel = 'messages-channel6';
 
       console.log("channel : " + this.channel);
@@ -25,7 +36,7 @@ angular.module('homer')
       };
 
       var init = function () {
-
+PubnubService.pubnubInit();
         Pubnub.subscribe({
           channel: self.channel,
           disconnect: whenDisconnected,
@@ -113,7 +124,7 @@ angular.module('homer')
 
         if (_.isEmpty(self.messages))
           populate();
-
+        
         return self.messages;
 
       };
@@ -168,4 +179,6 @@ angular.module('homer')
       }
 
     }
-  ]);
+  ]).factory('userList', [function(){
+    return { items: [] };
+  }]);;

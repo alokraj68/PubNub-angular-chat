@@ -5,9 +5,9 @@ angular.module('homer').directive('messageForm', function() {
     templateUrl: 'scripts/controllers/chat/message-form/message-form.html',
     scope: {},
     
-    controller: function($scope, currentUser, MessageService){
+    controller: function($scope, PubnubService, MessageService){
 
-      $scope.uuid = currentUser;
+      $scope.uuid = PubnubService.currentUser;
       $scope.messageContent = '';
 
       $scope.sendMessage = function(){

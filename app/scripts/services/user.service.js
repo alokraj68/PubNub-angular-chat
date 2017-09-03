@@ -1,6 +1,6 @@
 angular.module('homer')
-.factory('UserService', ['$rootScope', 'Pubnub','currentUser',
- function UserServiceFactory($rootScope, Pubnub, currentUser) {
+.factory('UserService', ['$rootScope', 'Pubnub','PubnubService',
+ function UserServiceFactory($rootScope, Pubnub, PubnubService) {
   
   // Aliasing this by self so we can access to this trough self in the inner functions
   var self = this;
@@ -23,7 +23,7 @@ angular.module('homer')
   var updateOnlineUserList = function(event){
       console.log(event);
       // We don't want to receive our own presence events
-      if(event['uuid'] === currentUser) return;
+      if(event['uuid'] === PubnubService.currentUser) return;
 
       if(event['action'] === 'join'){
 
@@ -56,6 +56,7 @@ angular.module('homer')
 
   var getOnlineUsers = function(){
     console.log("getting users");
+    //console.log(self.users);
     return self.users;
   };  
 

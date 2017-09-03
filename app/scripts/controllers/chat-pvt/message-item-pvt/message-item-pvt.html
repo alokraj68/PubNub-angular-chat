@@ -1,8 +1,9 @@
-<div ng-if="senderUuid == toUser">
+<div>
 <user-avatar uuid="{{senderUuid}}"></user-avatar>
 <a class="message-author title" href="#"> {{ senderUuid }} </a>
 <span class="message-date">  {{ date | date:"MM/dd/yyyy 'at' h:mma"}} </span>
 <span class="message-content">
         {{ content }}
         </span>
+        <!-- <div ng-if="senderUuid == toUser"> -->
 </div>

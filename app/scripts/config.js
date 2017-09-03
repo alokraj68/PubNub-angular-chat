@@ -10,7 +10,7 @@ function configState($stateProvider, $urlRouterProvider, $compileProvider) {
     $compileProvider.debugInfoEnabled(true);
 
     // Set default state
-    $urlRouterProvider.otherwise("/dashboard");
+    $urlRouterProvider.otherwise("/common/login");
     $stateProvider
 
         // Landing page
@@ -601,16 +601,17 @@ angular
     .run(function ($rootScope, $state, editableOptions) {
         $rootScope.$state = $state;
         editableOptions.theme = 'bs3';
-    }).run(['Pubnub', 'currentUser', function (Pubnub, currentUser) {
+    });
+    // .run(['Pubnub', 'currentUser', function (Pubnub, currentUser) {
 
-        // publish_key: 'pub-c-16e437f7-6523-4779-9ecd-da0ee9d2342e',
-        // subscribe_key: 'sub-c-1980a88a-7b7e-11e7-bda6-0619f8945a4f',
-        Pubnub.init({
-            publish_key: 'pub-c-a1cd7ac1-585e-478e-925b-65d17ce62f7d',
-            subscribe_key: 'sub-c-204f063e-c559-11e5-b764-02ee2ddab7fe',
-            uuid: currentUser,
-            origin: 'pubsub.pubnub.com',
-            ssl: true
-        });
+    //     // publish_key: 'pub-c-16e437f7-6523-4779-9ecd-da0ee9d2342e',
+    //     // subscribe_key: 'sub-c-1980a88a-7b7e-11e7-bda6-0619f8945a4f',
+    //     Pubnub.init({
+    //         publish_key: 'pub-c-a1cd7ac1-585e-478e-925b-65d17ce62f7d',
+    //         subscribe_key: 'sub-c-204f063e-c559-11e5-b764-02ee2ddab7fe',
+    //         uuid: currentUser,
+    //         origin: 'pubsub.pubnub.com',
+    //         ssl: true
+    //     });
 
-    }]);
+    // }]);
